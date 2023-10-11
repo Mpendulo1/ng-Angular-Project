@@ -1,0 +1,40 @@
+.card-col {
+    height: 60vh;
+    margin: 25px;
+    padding: 25px;
+}
+
+img.img-thumbnails {
+    width: 100px;
+    height: 14vh;
+}
+
+.input-quantity {
+    width: 55px;
+    border: 0;
+}
+
+.center {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center img {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: 30vh;
+    width: 250px;
+    margin: 20px 0;
+}
+
+.product-title {
+    font-style: bold;
+}
+.vstack {
+    justify-content: center !important;
+}

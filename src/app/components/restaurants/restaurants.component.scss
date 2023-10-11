@@ -1,0 +1,66 @@
+.product-title {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-top-img {
+    align-self: center;
+    height: 25vh;
+    width: 80%;
+    margin-top: 15px;
+}
+
+.card {
+    width: 17rem;
+    padding: 15px;
+    margin: 15px;
+}
+
+
+.row > * {
+    padding: 0;
+}
+
+.like-icon {
+    font-size: 15px;
+    bottom: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.4s;
+    height: 40px;
+    width: 40px;
+}
+
+.like-icon:hover {
+    background-color: #757575;
+    color: white;
+}
+
+.input-quantity {
+    border: 0;
+    width: 35px;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.quantity {
+    width: 120px;
+}
+
+.btn-increment-decrement {
+    width: 100%;
+    border-radius: 0 3px 3px 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-increment-decrement:hover {
+    background-color: #757575;
+}

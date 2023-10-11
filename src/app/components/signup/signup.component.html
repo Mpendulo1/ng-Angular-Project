@@ -1,0 +1,151 @@
+{{user|json}}
+<div class="container register-container">
+    <div class="row">
+        <div class="col">
+            <img
+                src="https://media.istockphoto.com/id/926645264/photo/grilled-shish-kebab-served-with-fried-chips-and-salad.jpg?s=2048x2048&w=is&k=20&c=dE5YVXWvQKqxbQv_NuXPq0b_xJJsHeFHDdhLEdlD-uk="
+                alt="an image of a plate with food and green salad"
+                class="img-fluid"
+            />
+        </div>
+        <div class="col">
+            <h1 class="text-center text-secondary border-bottom">Register</h1>
+            <p class="text-center text-secondary">
+                Please enter your information below
+            </p>
+            <form
+                [formGroup]="signup_form"
+                (ngSubmit)="signup()"
+                class="vstack gap-3"
+            >
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid' : name.errors?.['required']
+                            &&  name.touched
+                            }"
+                        placeholder="Name"
+                        formControlName="name"
+                        aria-describedby="name-label"
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="name.errors?.['required']
+                        && name.touched"
+                    >
+                        Name is required
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{'is-invalid' : surname.errors?.['required']
+                        &&surname.touched }"
+                        placeholder="Surname"
+                        formControlName="surname"
+                        aria-describedby="surname-label"
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="surname.errors?.['required']
+                        && surname.touched"
+                    >
+                        Surname is required
+                    </div>
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="surname.errors?.['pattern']
+                        && surname.touched"
+                    >
+                        Name should be contain letters only
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                        [ngClass]="{
+                            'is-invalid' : (email.errors?.['required']
+                            || email.errors?.['email'])
+                            && email.touched }"
+                        formControlName="email"
+                        aria-describedby="email-label"
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="email.errors?.['required']
+                        &&email.touched"
+                    >
+                        Email is required
+                    </div>
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="email.errors?.['email']
+                        && email.touched"
+                    >
+                        It should be in email format
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="phone"
+                        [ngClass]="{'is-invalid' : phone.errors?.['required']
+                         && phone.touched }"
+                        placeholder="Phone number"
+                        aria-describedby="phone-label"
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="phone.errors?.['required']
+                        &&phone.touched"
+                    >
+                        Phone number is required
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid' :( password.errors?.['required']
+                        ||password.errors?.['minlength'])
+                        && password.touched
+                    }"
+                        placeholder="Password"
+                        formControlName="password"
+                        aria-describedby="name-label"
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="password.errors?.['required']
+                        && password.touched"
+                    >
+                        Password is required
+                    </div>
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="password.errors?.['minlength']
+                        && password.touched"
+                    >
+                        Password must atleast contain 6 characters
+                    </div>
+                </div>
+                <div class="vstack gap-2">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-user"></i> Register
+                    </button>
+                    <div class="text-center">
+                        Already have an account?
+                        <a routerLink="/login"> Click here to login </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

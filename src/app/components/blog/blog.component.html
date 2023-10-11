@@ -1,0 +1,97 @@
+<ng-container *ngIf="products.length !== 0">
+    <div class="container">
+        <div class="justify-content-center m-2">
+            <div
+                class="card hstack gap-3 m-2"
+                *ngFor="let product of products; let i = index"
+            >
+                <div class="card-title">
+                    <img
+                        class="img-thumbnails m-2"
+                        src="{{ product.image }}"
+                        alt="product image "
+                    />
+                </div>
+                <div class="">
+                    <div>
+                        <span>{{ product.title }}</span>
+                    </div>
+                    <b>{{
+                        product.quantity * product.price
+                            | currency : "ZAR" : "symbol-narrow"
+                    }}</b>
+                    <div class="item-count quantity hstack">
+                        <div
+                            (click)="decrementQauntity(product)"
+                            class="btn btn-outline-secondary"
+                        >
+                            <i class="fa-solid fa-minus"></i>
+                        </div>
+                        <input
+                            class="input-quantity text-center"
+                            type="number"
+                            value="{{ product.quantity }}"
+                            readonly
+                        />
+                        <div
+                            (click)="incrementQuantity(product)"
+                            class="btn btn-outline-secondary"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side vstack gap-3 m-2">
+                    <button
+                        (click)="removeItem(i)"
+                        class="btn btn-outline-danger ms-auto"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button
+                        routerLink="/restaurant-details/{{ product.id }}"
+                        class="btn btn-outline-info ms-auto"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="last">
+            <div>
+                <strong
+                    >Total:
+                    {{
+                        grand_total | currency : "ZAR" : "symbol-narrow"
+                    }}</strong
+                >
+            </div>
+            <button routerLink="/restaurant" class="btn btn-outline-secondary">
+                Shop More
+            </button>
+            <button (click)="clearCart()" class="btn btn-outline-warning">
+                Clear Cart
+            </button>
+            <button class="btn btn-outline-danger">Checkout</button>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length === 0">
+    <div class="container">
+        <div class="card card-col">
+            <h5 class="card-title text-secondary text-center">My Cart</h5>
+        </div>
+        <div class="center">
+            <img
+                src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg?w=826"
+                alt=""
+            />
+            <h4>Your cart is empty</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/restaurant" class="btn btn-outline-secondary">
+                Shop Now
+            </button>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,91 @@
+{{ sub_values | json }}
+<div class="container login-container">
+    <div class="row">
+        <div class="col">
+            <img
+                src="https://media.istockphoto.com/id/928823336/photo/grilled-chicken-breast-fried-chicken-fillet-and-fresh-vegetable-salad-of-tomatoes-cucumbers.jpg?s=2048x2048&w=is&k=20&c=Wz1ycIM7noo-8OnLsAjutdRBznnwZoPN7jiDhaau_Bw="
+                alt="imagge of a plate food and 3 forks on the left-side"
+                class="img-fluid"
+            />
+        </div>
+        <div class="col">
+            <form [formGroup]="login_form" (ngSubmit)="login()" class="row g-3">
+                <h2 class="text-center text-secondary border-bottom">LOGIN</h2>
+                <p class="text-center">Please enter your details to login</p>
+                <div class="input-group">
+                    <span class="input-group-text" id="email-label">
+                        @email</span
+                    >
+                    <input
+                        class="form-control"
+                        type="text"
+                        [ngClass]="{
+                            'is-invalid' : (email.errors?.['required']
+                            || email.errors?.['email'])
+                            && email.touched }"
+                        formControlName="email"
+                        placeholder="example@email.com"
+                        aria-describedby="email-label"
+                    />
+
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="email.errors?.['required']
+                        &&email.touched"
+                    >
+                        Email is required
+                    </div>
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="email.errors?.['email']
+                        && email.touched"
+                    >
+                        It should be in email format
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text" id="password-label"
+                        >Password</span
+                    >
+                    <input
+                        type="password"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid' :( password.errors?.['required']
+                        ||password.errors?.['minlength'])
+                        && password.touched
+                    }"
+                        placeholder="Password"
+                        formControlName="password"
+                        aria-describedby="name-label"
+                    />
+                     <div
+                        class="invalid-feedback"
+                        *ngIf="password.errors?.['required']
+                        && password.touched"
+                    >
+                        Password is required
+                    </div>
+                   <div
+                        class="invalid-feedback"
+                        *ngIf="password.errors?.['minlength']
+                        && password.touched"
+                    >
+                        Password must atleast contain 6 characters
+                    </div>
+                </div>
+
+                <div class="vstack gap-2">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        Login <i class="fa-solid fa-arrow-right fa-lx"></i>
+                    </button>
+                    <div class="text-center">
+                        Don't have an account?
+                        <a routerLink="/signup">Click here to register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

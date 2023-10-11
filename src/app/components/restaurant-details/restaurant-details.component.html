@@ -1,0 +1,46 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="mb-3 text-center col-md-6 prod_detail">
+            <div class="ratio ratio-1x1">
+                <div class="product-image">
+                    <img
+                        class="img-fluid image rouded-3"
+                        loading="lazy"
+                        src="{{ product_details.image }}"
+                        alt="{{ product_details.title }} "
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 producti-information">
+            <h1 class="pb-3 product-title border-bottom text-secondary">
+                {{ product_details.title }}
+            </h1>
+            <div class="d-flex justify-content-between">
+                <div class="hstack gap-3">
+                    <p>
+                        {{
+                            product_details.price
+                                | currency : "ZAR" : "symbol-narrow"
+                        }}
+                    </p>
+
+                    <p>{{ product_details.rating.rate }}</p>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="my-3">
+                <h3 class="text-secondary">Description</h3>
+                <p>{{ product_details.description }}</p>
+            </div>
+            <div class="row row-cols-2">
+                <div class="col hstack gap-3">
+                    <button class="btn btn-outline-secondary">
+                        Add to cart
+                    </button>
+                    <button class="btn btn-outline-secondary">Shop more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
