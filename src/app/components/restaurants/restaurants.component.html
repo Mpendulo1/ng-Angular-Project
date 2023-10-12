@@ -1,60 +1,63 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <h3 class="text-center">Products</h3>
-        <div
-            class="card col-md-2 card-overlay p-3"
-            *ngFor="let product of product_list"
-        >
-            <div class="d-flex justify-content-center align-items-center">
+    <h3 class="text-center">Products</h3>
+    <div
+        class="row row-cols-2 row-cols-md-3 row-cols-xl-4 gy-4 d-flex justify-content-evenly g-4"
+    >
+        <div class="col" *ngFor="let product of product_list">
+            <div class="card h-100 card-overlay">
                 <a
                     class="d-block ratio ratio-1x1"
                     routerLink="/restaurant-details/{{ product.id }}"
                 >
                     <img
-                        class="mw-80 mh-80"
+                        class="object-fit-contain mw-80 mh-80"
                         src="{{ product.image }}"
                         alt="..."
                     />
                 </a>
-            </div>
-            <div class="vstack gap-3">
-                <div class="hstack gap-3">
-                    <span class="text-secondary fw-bolder">
-                        {{ product.price | currency : "ZAR" : "symbol-narrow" }}
-                        incl VAT
-                    </span>
-                    <div class="ms-auto">
-                        <i class="like-icon fa-regular fa-heart fa-xl"></i>
-                    </div>
-                </div>
-                <h5 class="mb-auto">{{ product.title }}</h5>
-                <div class="hstack gap-1">
-                    <div class="quantity hstack">
-                        <div
-                            (click)="decrementQuantity(product)"
-                            class="btn btn-outline-secondary"
-                        >
-                            <i class="fa-solid fa-minus"></i>
-                        </div>
-                        <input
-                            class="input-quantity text-center"
-                            type="text"
-                            value="{{ product.quantity }}"
-                            readonly
-                        />
-                        <div
-                            (click)="incrementQuantity(product)"
-                            class="btn btn-outline-secondary"
-                        >
-                            <i class="fa-solid fa-plus"></i>
+
+                <div class="vstack gap-3">
+                    <div class="hstack gap-3">
+                        <span class="text-secondary fw-bolder">
+                            {{
+                                product.price
+                                    | currency : "ZAR" : "symbol-narrow"
+                            }}
+                            incl VAT
+                        </span>
+                        <div class="ms-auto">
+                            <i class="like-icon fa-regular fa-heart fa-xl"></i>
                         </div>
                     </div>
-                    <button
-                        (click)="addToCart(product)"
-                        class="btn btn-outline-secondary ms-auto"
-                    >
-                        Add To Cart
-                    </button>
+                    <h5 class="mb-auto">{{ product.title }}</h5>
+                    <div class="hstack gap-1">
+                        <div class="quantity hstack">
+                            <div
+                                (click)="decrementQuantity(product)"
+                                class="btn btn-outline-secondary"
+                            >
+                                <i class="fa-solid fa-minus"></i>
+                            </div>
+                            <input
+                                class="input-quantity text-center"
+                                type="text"
+                                value="{{ product.quantity }}"
+                                readonly
+                            />
+                            <div
+                                (click)="incrementQuantity(product)"
+                                class="btn btn-outline-secondary"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <button
+                            (click)="addToCart(product)"
+                            class="btn btn-outline-secondary ms-auto"
+                        >
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

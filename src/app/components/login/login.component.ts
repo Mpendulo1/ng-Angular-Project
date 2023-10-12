@@ -11,7 +11,10 @@ export class LoginComponent implements OnInit {
     public submitted: boolean = false;
     public sub_values: any;
 
-    constructor(private formBuilder: FormBuilder, private loginService:RegistrationService) {}
+    constructor(
+        private formBuilder: FormBuilder,
+        private loginService: RegistrationService
+    ) {}
 
     ngOnInit(): void {}
 
@@ -29,6 +32,6 @@ export class LoginComponent implements OnInit {
     }
 
     public login() {
-        this.loginService.login(this.login_form.value)
+        this.loginService.login(this.login_form.value);
     }
 }

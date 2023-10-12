@@ -7,7 +7,7 @@
             >
                 <div class="card-title">
                     <img
-                        class="img-thumbnails m-2"
+                        class="img-thumbnails m-2 object-fit-contain"
                         src="{{ product.image }}"
                         alt="product image "
                     />
@@ -29,7 +29,7 @@
                         </div>
                         <input
                             class="input-quantity text-center"
-                            type="number"
+                            type="text"
                             value="{{ product.quantity }}"
                             readonly
                         />
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="last">
+        <div class="last hstack">
             <div>
                 <strong
                     >Total:
@@ -66,13 +66,18 @@
                     }}</strong
                 >
             </div>
-            <button routerLink="/restaurant" class="btn btn-outline-secondary">
-                Shop More
-            </button>
-            <button (click)="clearCart()" class="btn btn-outline-warning">
-                Clear Cart
-            </button>
-            <button class="btn btn-outline-danger">Checkout</button>
+            <div class="hstack gap-3 ms-auto">
+                <button
+                    routerLink="/restaurant"
+                    class="btn btn-outline-secondary"
+                >
+                    Shop More
+                </button>
+                <button (click)="clearCart()" class="btn btn-outline-warning">
+                    Clear Cart
+                </button>
+                <button class="btn btn-outline-danger">Checkout</button>
+            </div>
         </div>
     </div>
 </ng-container>
