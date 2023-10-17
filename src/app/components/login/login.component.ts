@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { RegistrationService } from '../../service/registration.service';
+
+import { AuthService } from '../../service/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private loginService: RegistrationService
+        private authService: AuthService
     ) {}
 
     ngOnInit(): void {}
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
     }
 
     public login() {
-        this.loginService.login(this.login_form.value);
+        this.authService.login(this.login_form.value);
+        const token = this.login_form.value;
+        localStorage.setItem('token', JSON.stringify(token.password));
     }
 }

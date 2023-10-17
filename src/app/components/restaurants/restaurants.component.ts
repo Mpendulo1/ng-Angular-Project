@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../service/cart.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
     selector: 'app-restaurants',
@@ -16,7 +18,9 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
 
     constructor(
         private productService: ProductService,
-        private cartService: CartService
+        private cartService: CartService,
+        private router: Router,
+        private authService: AuthService
     ) {}
 
     ngOnInit(): void {
@@ -44,5 +48,8 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
         if (product.quantity > 0) {
             product.quantity += -1;
         }
+    }
+    public loggedIn(): string | null {
+        return this.authService.loggedIn();
     }
 }

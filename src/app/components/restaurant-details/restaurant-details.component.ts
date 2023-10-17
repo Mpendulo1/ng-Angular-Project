@@ -3,6 +3,7 @@ import { CartService } from '../../service/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 import { ProductService } from '../../service/product.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
     selector: 'app-restaurant-details',
@@ -14,7 +15,8 @@ export class RestaurantDetailsComponent implements OnInit {
     public product_details: any;
     constructor(
         private productService: ProductService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private authService: AuthService
     ) {}
 
     public ngOnInit(): void {
@@ -25,5 +27,9 @@ export class RestaurantDetailsComponent implements OnInit {
             this.product_details = data;
             console.log(data);
         });
+    }
+
+    public loogedIn(): string | null {
+        return this.authService.loggedIn();
     }
 }

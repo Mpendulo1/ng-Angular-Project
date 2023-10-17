@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
-export class RegistrationService {
+export class AuthService {
     public registered_users = new BehaviorSubject<any[]>([]);
 
     public users_list: any = [];
-
     constructor(private router: Router) {}
 
     private save() {
@@ -31,7 +29,9 @@ export class RegistrationService {
                 'user_details',
                 JSON.stringify(this.users_list)
             );
+            this.save();
             this.registered_users.next(this.users_list);
+
             alert('Sign up successful !!');
             this.router.navigate(['/login']);
         }
@@ -48,9 +48,19 @@ export class RegistrationService {
                 user.password === username.password
             ) {
                 alert('Login Successful');
+
+                this.router.navigate(['restaurant']);
             } else {
-                alert('Incorrect Credentials !!');
+                alert('Incorrect Credentials!!');
             }
         });
+    }
+
+    public loggedIn() {
+        return JSON.parse(localStorage.getItem('token')!);
+    }
+
+    public logout() {
+        return localStorage.removeItem('token');
     }
 }

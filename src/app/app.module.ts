@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,7 @@ import { SignupComponent } from './components/signup/signup.component';
         HttpClientModule,
         ReactiveFormsModule,
     ],
-    providers: [],
+    providers: [AuthService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -27,12 +27,23 @@
                 >
                 <!-- <input class="form-control me-2" type="text" /> -->
             </form>
+            <ng-container *ngIf="!loogedIn()">
+                <div class="nav-item">
+                    <a class="nav-link" routerLink="login">login</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" routerLink="signup">Signup</a>
+                </div>
+            </ng-container>
 
             <div class="nav-item">
-                <a class="nav-link" routerLink="login">login</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link" routerLink="signup">Signup</a>
+                <a
+                    class="nav-link"
+                    *ngIf="loogedIn()"
+                    (click)="logout()"
+                    routerLink="login"
+                    >Logout</a
+                >
             </div>
 
             <div class="nav-link">

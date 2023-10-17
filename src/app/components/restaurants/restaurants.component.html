@@ -18,23 +18,39 @@
 
                 <div class="vstack gap-3">
                     <div class="hstack gap-3">
-                        <span class="text-secondary fw-bolder">
+                        <span
+                            *ngIf="loggedIn()"
+                            class="text-secondary fw-bolder"
+                        >
                             {{
                                 product.price
                                     | currency : "ZAR" : "symbol-narrow"
                             }}
                             incl VAT
                         </span>
+                        <span
+                            *ngIf="!loggedIn()"
+                            class="text-secondary fw-bolder"
+                        >
+                            ** Login to see price**
+                        </span>
+
                         <div class="ms-auto">
                             <i class="like-icon fa-regular fa-heart fa-xl"></i>
                         </div>
                     </div>
                     <h5 class="mb-auto">{{ product.title }}</h5>
-                    <div class="hstack gap-1">
+                    <div class="hstack justify-content-center gap-1">
                         <div class="quantity hstack">
                             <div
                                 (click)="decrementQuantity(product)"
-                                class="btn btn-outline-secondary"
+                                class="btn d-none d-sm-block btn-outline-secondary"
+                            >
+                                <i class="fa-solid fa-minus"></i>
+                            </div>
+                            <div
+                                (click)="decrementQuantity(product)"
+                                class="btn btn-sm d-block d-sm-none btn-outline-secondary"
                             >
                                 <i class="fa-solid fa-minus"></i>
                             </div>
@@ -46,14 +62,26 @@
                             />
                             <div
                                 (click)="incrementQuantity(product)"
-                                class="btn btn-outline-secondary"
+                                class="btn d-none d-sm-block btn-outline-secondary"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div
+                                (click)="incrementQuantity(product)"
+                                class="btn btn-sm d-block d-sm-none btn-outline-secondary"
                             >
                                 <i class="fa-solid fa-plus"></i>
                             </div>
                         </div>
                         <button
                             (click)="addToCart(product)"
-                            class="btn btn-outline-secondary ms-auto"
+                            class="btn btn-outline-secondary ms-auto d-none d-sm-block"
+                        >
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button
+                            (click)="addToCart(product)"
+                            class="btn btn-sm d-block d-sm-none btn-outline-secondary ms-auto"
                         >
                             <i class="fa-solid fa-cart-plus"></i>
                         </button>

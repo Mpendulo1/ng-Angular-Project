@@ -1,7 +1,7 @@
 {{ sub_values | json }}
 <div class="container login-container">
     <div class="row">
-        <div class="col">
+        <div class="col d-none d-sm-block">
             <img
                 src="https://media.istockphoto.com/id/507753673/photo/clothing-and-wigs-at-second-hand-store.jpg?s=2048x2048&w=is&k=20&c=q-_3_hWBBtiMzlMxQPZg4guAlIAYJzu0XyS5Ab-kTx8="
                 alt="imagge of a plate food and 3 forks on the left-side"
@@ -12,21 +12,19 @@
             <form [formGroup]="login_form" (ngSubmit)="login()" class="row g-3">
                 <h2 class="text-center text-secondary border-bottom">LOGIN</h2>
                 <p class="text-center">Please enter your details to login</p>
-                <div class="input-group">
-                    <span class="input-group-text" id="email-label">
-                        @email</span
-                    >
+                <div class="form-floating">
                     <input
+                        id="Email"
                         class="form-control"
-                        type="text"
-                        [ngClass]="{
-                            'is-invalid' : (email.errors?.['required']
-                            || email.errors?.['email'])
-                            && email.touched }"
-                        formControlName="email"
                         placeholder="example@email.com"
-                        aria-describedby="email-label"
+                        formControlName="email"
+                        type="email"
+                        [ngClass]="{
+                        'is-invalid' : (email.errors?.['required']
+                        || email.errors?.['email'])
+                        && email.touched }"
                     />
+                    <label for="Email">Email Adress</label>
 
                     <div
                         class="invalid-feedback"
@@ -44,22 +42,21 @@
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <span class="input-group-text" id="password-label"
-                        >Password</span
-                    >
+                <div class="form-floating">
                     <input
                         type="password"
                         class="form-control"
+                        id="Password"
                         [ngClass]="{
                             'is-invalid' :( password.errors?.['required']
-                        ||password.errors?.['minlength'])
-                        && password.touched
-                    }"
+                            ||password.errors?.['minlength'])
+                            && password.touched
+                        }"
                         placeholder="Password"
                         formControlName="password"
                         aria-describedby="name-label"
                     />
+                    <label for="Password">Password</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="password.errors?.['required']

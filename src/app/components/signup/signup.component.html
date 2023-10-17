@@ -1,6 +1,6 @@
 <div class="container register-container">
     <div class="row">
-        <div class="col">
+        <div class="col d-none d-sm-block">
             <img
                 src="https://media.istockphoto.com/id/1350804355/photo/multiple-storage-devices-data-security.jpg?s=2048x2048&w=is&k=20&c=ldce8wNSwfLg_SFbhnYWtR4lZzHQ8qAFd4rJQnyKiUo="
                 alt="an image of a plate with food and green salad"
@@ -15,9 +15,9 @@
             <form
                 [formGroup]="signup_form"
                 (ngSubmit)="signup()"
-                class="vstack gap-3"
+                class="vstack gap-2"
             >
-                <div class="input-group">
+                <div class="form-floating">
                     <input
                         type="text"
                         class="form-control"
@@ -27,8 +27,9 @@
                             }"
                         placeholder="Name"
                         formControlName="name"
-                        aria-describedby="name-label"
+                        id="Name"
                     />
+                    <label for="Name">First Name</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="name.errors?.['required']
@@ -37,16 +38,18 @@
                         Name is required
                     </div>
                 </div>
-                <div class="input-group">
+
+                <div class="form-floating">
                     <input
                         type="text"
+                        id="Surname"
                         class="form-control"
                         [ngClass]="{'is-invalid' : surname.errors?.['required']
                         &&surname.touched }"
                         placeholder="Surname"
                         formControlName="surname"
-                        aria-describedby="surname-label"
                     />
+                    <label for="Surname">Surname</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="surname.errors?.['required']
@@ -59,11 +62,12 @@
                         *ngIf="surname.errors?.['pattern']
                         && surname.touched"
                     >
-                        Name should be contain letters only
+                        Surname should be contain letters only
                     </div>
                 </div>
-                <div class="input-group">
+                <div class="form-floating">
                     <input
+                        id="Email"
                         type="email"
                         class="form-control"
                         placeholder="Email"
@@ -72,8 +76,8 @@
                             || email.errors?.['email'])
                             && email.touched }"
                         formControlName="email"
-                        aria-describedby="email-label"
                     />
+                    <label for="Email">Email Address</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="email.errors?.['required']
@@ -89,16 +93,17 @@
                         It should be in email format
                     </div>
                 </div>
-                <div class="input-group">
+                <div class="form-floating">
                     <input
+                        id="Number"
                         type="number"
                         class="form-control"
                         formControlName="phone"
                         [ngClass]="{'is-invalid' : phone.errors?.['required']
                          && phone.touched }"
                         placeholder="Phone number"
-                        aria-describedby="phone-label"
                     />
+                    <label for="Number">Phone Number</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="phone.errors?.['required']
@@ -107,8 +112,9 @@
                         Phone number is required
                     </div>
                 </div>
-                <div class="input-group">
+                <div class="form-floating">
                     <input
+                        id="Password"
                         type="password"
                         class="form-control"
                         [ngClass]="{
@@ -120,6 +126,7 @@
                         formControlName="password"
                         aria-describedby="name-label"
                     />
+                    <label for="Password">Password</label>
                     <div
                         class="invalid-feedback"
                         *ngIf="password.errors?.['required']

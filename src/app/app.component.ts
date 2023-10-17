@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './service/cart.service';
 import { ProductService } from './service/product.service';
+import { AuthService } from './service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -12,11 +14,23 @@ export class AppComponent implements OnInit {
     public total_items = 0;
     constructor(
         private cartService: CartService,
-        private productService: ProductService
+        private authService: AuthService,
+        private router: Router
     ) {}
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.cartService.getProducts().subscribe((data) => {
             this.total_items = data.length;
         });
+
+        this.loogedIn();
+    }
+
+    public logout() {
+        this.authService.logout();
+        // this.router.navigate(['/login']);
+    }
+
+    public loogedIn(): string | null {
+        return this.authService.loggedIn();
     }
 }

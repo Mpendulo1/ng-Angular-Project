@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { RegistrationService } from '../../service/registration.service';
-
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
@@ -14,10 +12,7 @@ export class SignupComponent implements OnInit {
     public user_list: any[] = [];
     public user: any;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private register: RegistrationService
-    ) {}
+    constructor(private formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
         this.signup_form = this.formBuilder.group({
@@ -49,7 +44,5 @@ export class SignupComponent implements OnInit {
         return this.signup_form.get('password');
     }
 
-    public signup() {
-        this.register.signup(this.signup_form.value);
-    }
+    public signup() {}
 }

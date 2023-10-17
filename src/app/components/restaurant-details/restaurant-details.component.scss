@@ -13,3 +13,21 @@
     height: 45vh;
     width: 70%;
 }
+
+.like-icon {
+    font-size: 15px;
+    bottom: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.4s;
+    height: 40px;
+    width: 40px;
+}
+
+.like-icon:hover {
+    background-color: #757575;
+    color: white;
+}
