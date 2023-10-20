@@ -1,16 +1,16 @@
 <div class="container">
-    <h3 class="text-center">Products</h3>
+    <h3 class="text-center border-bottom pb-3">Products</h3>
     <div
         class="row row-cols-2 row-cols-md-3 row-cols-xl-4 gy-4 d-flex justify-content-evenly g-4"
     >
         <div class="col" *ngFor="let product of product_list">
-            <div class="card h-100 card-overlay">
+            <div class="card shadow h-100 card-overlay">
                 <a
                     class="d-block ratio ratio-1x1"
                     routerLink="/restaurant-details/{{ product.id }}"
                 >
                     <img
-                        class="object-fit-contain mw-80 mh-80"
+                        class="object-fit-contain"
                         src="{{ product.image }}"
                         alt="..."
                     />
@@ -36,7 +36,10 @@
                         </span>
 
                         <div class="ms-auto">
-                            <i class="like-icon fa-regular fa-heart fa-xl"></i>
+                            <i
+                                (click)="likedProduct(product)"
+                                class="like-icon fa-regular fa-heart fa-xl"
+                            ></i>
                         </div>
                     </div>
                     <h5 class="mb-auto">{{ product.title }}</h5>

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CartService } from '../../service/cart.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { FavouriteService } from '../../service/favourite.service';
 
 @Component({
     selector: 'app-restaurants',
@@ -20,7 +21,8 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
         private productService: ProductService,
         private cartService: CartService,
         private router: Router,
-        private authService: AuthService
+        private authService: AuthService,
+        private favouriteS: FavouriteService
     ) {}
 
     ngOnInit(): void {
@@ -49,7 +51,12 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
             product.quantity += -1;
         }
     }
+
     public loggedIn(): string | null {
         return this.authService.loggedIn();
+    }
+
+    public likedProduct(product: any) {
+        this.favouriteS.addToFavourite(product);
     }
 }

@@ -30,12 +30,12 @@ export class CartService {
         return this.product_list.asObservable();
     }
 
-    public singleProduct(id:any) {
-        this.getProducts().pipe().subscribe(data => {
-            console.log(data);
-
-        })
-
+    public singleProduct(id: any) {
+        this.getProducts()
+            .pipe()
+            .subscribe((data) => {
+                console.log(data);
+            });
     }
 
     public AddToCart(product: any) {

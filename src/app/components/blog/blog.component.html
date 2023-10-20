@@ -71,17 +71,16 @@
                     routerLink="/restaurant"
                     class="btn btn-outline-secondary"
                 >
-                    Shop More
+                    <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <button (click)="clearCart()" class="btn btn-outline-warning">
-                    Clear Cart
+                    <i class="fa-solid fa-trash"></i>
                 </button>
                 <button class="btn btn-outline-danger">Checkout</button>
             </div>
         </div>
     </div>
 </ng-container>
-
 <ng-container *ngIf="products.length === 0">
     <div class="container">
         <div class="card card-col">

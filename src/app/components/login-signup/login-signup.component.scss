@@ -1,0 +1,36 @@
+.card {
+    padding: 15px;
+    margin: 15px;
+}
+
+.card-overlay-title {
+    inset: 50% 0 auto;
+    max-width: 100%;
+    text-align: center;
+    background-color: #7575757f;
+    transform: translateY(-50%);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.like-icon {
+    font-size: 15px;
+    bottom: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: -6%;
+    bottom: 81%;
+    border-radius: 50%;
+    transition: all 0.4s;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.like-icon:hover {
+    background-color: #757575;
+    color: white;
+    cursor: pointer;
+}

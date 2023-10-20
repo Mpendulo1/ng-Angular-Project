@@ -1,1 +1,31 @@
-<p>login-signup works!</p>
+<div class="container">
+    <h2 class="text-center text-secondary border-bottom pb-3">
+        Favourite Products
+    </h2>
+    <div
+        class="row row-cols-2 row-cols-md-3 row-cols-lg-5 justify-content-evenly g-2"
+    >
+        <div class="col" *ngFor="let liked of favourite_items; let i = index">
+            <a
+                routerLink="/restaurant-details/{{ liked.id }}"
+                class="card shadow card-overlay"
+            >
+                <div class="ratio ratio-1x1">
+                    <img
+                        src="{{ liked.image }}"
+                        alt="{{ liked.title }}"
+                        class="card-img"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="card-overlay-title position-absolute">
+                    <h6 class="text-light">{{ liked.title }}</h6>
+                </div>
+            </a>
+            <i
+                (click)="dislikeItem(i)"
+                class="fa-regular fa-heart like-icon"
+            ></i>
+        </div>
+    </div>
+</div>
