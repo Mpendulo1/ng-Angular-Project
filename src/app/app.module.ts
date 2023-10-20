@@ -14,7 +14,6 @@ import { RestaurantDetailsComponent } from './components/restaurant-details/rest
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthService } from './service/auth.service';
-import { CommonModule } from '@angular/common';
 import { LoginSignupComponent } from './components/login-signup/login.component';
 
 @NgModule({

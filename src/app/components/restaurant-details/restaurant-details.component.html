@@ -45,10 +45,18 @@
             </div>
             <div class="row row-cols-2">
                 <div class="col hstack gap-3">
-                    <button class="btn btn-outline-secondary">
+                    <button
+                        (click)="addToCart(product_details)"
+                        class="btn btn-outline-secondary"
+                    >
                         Add to cart
                     </button>
-                    <button class="btn btn-outline-secondary">Shop more</button>
+                    <button
+                        class="btn btn-outline-secondary"
+                        routerLink="/restaurant"
+                    >
+                        Shop more
+                    </button>
                 </div>
             </div>
         </div>

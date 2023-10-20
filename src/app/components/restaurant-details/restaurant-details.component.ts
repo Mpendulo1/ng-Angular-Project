@@ -15,6 +15,7 @@ export class RestaurantDetailsComponent implements OnInit {
     public product_details: any;
     constructor(
         private productService: ProductService,
+        private cartService: CartService,
         private route: ActivatedRoute,
         private authService: AuthService
     ) {}
@@ -31,5 +32,8 @@ export class RestaurantDetailsComponent implements OnInit {
 
     public loogedIn(): string | null {
         return this.authService.loggedIn();
+    }
+    public addToCart(product: any) {
+        this.cartService.AddToCart(product);
     }
 }
