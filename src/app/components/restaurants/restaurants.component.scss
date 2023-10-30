@@ -26,13 +26,16 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    color: #757575;
     border-radius: 50%;
     transition: all 0.4s;
+    cursor: pointer;
     height: 40px;
     width: 40px;
 }
 
-.like-icon:hover {
+.like-icon:hover,
+.active {
     background-color: #757575;
     color: white;
 }

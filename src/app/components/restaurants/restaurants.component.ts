@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProductService } from '../../service/product.service';
+
 import { Subscription } from 'rxjs';
+
 import { CartService } from '../../service/cart.service';
-import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
-import { FavouriteService } from '../../service/favourite.service';
+import { ProductService } from '../../service/product.service';
+import { FavoriteService } from '../../service/favourite.service';
 
 @Component({
     selector: 'app-restaurants',
@@ -14,15 +15,15 @@ import { FavouriteService } from '../../service/favourite.service';
 export class RestaurantsComponent implements OnInit, OnDestroy {
     private product_sub!: Subscription;
 
+    public isActive: boolean = false;
     public product_list: any;
     public item_count!: number;
 
     constructor(
         private productService: ProductService,
         private cartService: CartService,
-        private router: Router,
         private authService: AuthService,
-        private favouriteS: FavouriteService
+        private favoriteS: FavoriteService
     ) {}
 
     ngOnInit(): void {
@@ -56,7 +57,13 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
         return this.authService.loggedIn();
     }
 
-    public likedProduct(product: any) {
-        this.favouriteS.addToFavourite(product);
+    public favorite(product: any) {
+        this.favoriteS.reactToProduct(product);
+        this.isActive = !this.isActive;
+        let active = this.product_list.map((item: any) => {
+            return item.id === product.id;
+        });
+
+        console.log(active);
     }
 }

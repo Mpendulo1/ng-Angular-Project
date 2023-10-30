@@ -4,39 +4,48 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
-export class FavouriteService {
+export class FavoriteService {
     public product_sub = new BehaviorSubject<any[]>([]);
     public product_sub$ = this.product_sub.asObservable();
 
-    private favourite_list: any = [];
+    private favorite_list: any = [];
 
     constructor() {
-        this.fetchFavouriteProduct();
+        this.fetchFavoriteProduct();
     }
 
     public save() {
-        localStorage.setItem('favourite', JSON.stringify(this.favourite_list));
+        localStorage.setItem('favourite', JSON.stringify(this.favorite_list));
     }
 
-    public addToFavourite(item: any) {
-        this.favourite_list.push(item);
-        this.save();
-        this.product_sub.next(this.favourite_list);
-    }
-
-    public fetchFavouriteProduct() {
+    public fetchFavoriteProduct() {
         const data = JSON.parse(localStorage.getItem('favourite') ?? '[]');
         const retrieved_data = data.map((product: any) => {
             return product;
         });
-        this.favourite_list = retrieved_data;
-        this.product_sub.next(this.favourite_list);
+        this.favorite_list = retrieved_data;
+        this.product_sub.next(this.favorite_list);
     }
 
-    public removeFavourite(index: any) {
-        this.favourite_list.length > index;
-        this.favourite_list.splice(index, 1);
-        this.product_sub.next(this.favourite_list);
+    public removeFavorite(index: any) {
+        this.favorite_list.length > index;
+        this.favorite_list.splice(index, 1);
+        this.product_sub.next(this.favorite_list);
         this.save();
+    }
+
+    public reactToProduct(product: any) {
+        const value = this.favorite_list.find((item: any) => {
+            return item.id === product.id;
+        });
+        if (value) {
+            this.favorite_list.splice(product);
+            this.save();
+            this.product_sub.next(this.favorite_list);
+        } else {
+            this.favorite_list.push(product);
+            this.product_sub.next(this.favorite_list);
+            this.save();
+        }
     }
 }

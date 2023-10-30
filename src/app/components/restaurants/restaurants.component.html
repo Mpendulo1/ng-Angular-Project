@@ -3,7 +3,7 @@
     <div
         class="row row-cols-2 row-cols-md-3 row-cols-xl-4 gy-4 d-flex justify-content-evenly g-4"
     >
-        <div class="col" *ngFor="let product of product_list">
+        <div class="col" *ngFor="let product of product_list; let i = index">
             <div class="card shadow h-100 card-overlay">
                 <a
                     class="d-block ratio ratio-1x1"
@@ -37,8 +37,9 @@
 
                         <div class="ms-auto">
                             <i
-                                (click)="likedProduct(product)"
-                                class="like-icon fa-regular fa-heart fa-xl"
+                                (click)="favorite(product)"
+                                [class.active]="isActive"
+                                class="like-icon fa-solid fa-heart fa-xl"
                             ></i>
                         </div>
                     </div>

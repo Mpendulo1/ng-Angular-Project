@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+
 import { ProductService } from '../../service/product.service';
 import { AuthService } from '../../service/auth.service';
 

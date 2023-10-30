@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavouriteService } from '../../service/favourite.service';
+import { FavoriteService } from '../../service/favourite.service';
 
 @Component({
     selector: 'app-login',
@@ -9,7 +9,7 @@ import { FavouriteService } from '../../service/favourite.service';
 export class LoginSignupComponent implements OnInit {
     public favourite_items: any;
 
-    constructor(private favouriteS: FavouriteService) {}
+    constructor(private favouriteS: FavoriteService) {}
 
     ngOnInit(): void {
         this.favouriteS.product_sub$.subscribe((data) => {
@@ -18,6 +18,6 @@ export class LoginSignupComponent implements OnInit {
     }
 
     public dislikeItem(index: any) {
-        this.favouriteS.removeFavourite(index);
+        this.favouriteS.removeFavorite(index);
     }
 }
