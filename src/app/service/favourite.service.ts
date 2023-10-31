@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FavoriteService {
+    private favorite_list: any = [];
+
+    public product_liked = new EventEmitter<boolean>(false);
     public product_sub = new BehaviorSubject<any[]>([]);
     public product_sub$ = this.product_sub.asObservable();
-
-    private favorite_list: any = [];
 
     constructor() {
         this.fetchFavoriteProduct();
@@ -47,5 +48,6 @@ export class FavoriteService {
             this.product_sub.next(this.favorite_list);
             this.save();
         }
+        this.product_liked.emit(product);
     }
 }

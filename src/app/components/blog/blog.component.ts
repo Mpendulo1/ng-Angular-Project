@@ -35,14 +35,14 @@ export class BlogComponent implements OnInit, OnDestroy {
     }
 
     public incrementQuantity(product: any) {
-        this.cartService.incrementQauntity(product);
+        this.cartService.incrementQuantity(product);
         console.log(product);
     }
 
-    public decrementQauntity(product: any) {
-        this.cartService.decrementQauntity(product);
+    public decrementQuantity(product: any) {
+        this.cartService.decrementQuantity(product);
     }
 }
 
- 
+
 

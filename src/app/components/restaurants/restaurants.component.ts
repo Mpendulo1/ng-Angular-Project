@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { FavoriteService } from '../../service/favourite.service';
     templateUrl: './restaurants.component.html',
     styleUrls: ['./restaurants.component.scss'],
 })
-export class RestaurantsComponent implements OnInit, OnDestroy {
+export class RestaurantsComponent implements OnInit {
     private product_sub!: Subscription;
 
     public isActive: boolean = false;
@@ -35,8 +35,6 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy(): void {}
-
     public addToCart(product: any) {
         this.cartService.AddToCart(product);
     }
@@ -48,7 +46,7 @@ export class RestaurantsComponent implements OnInit, OnDestroy {
     }
 
     public decrementQuantity(product: any) {
-        if (product.quantity > 0) {
+        if (product.quantity > 1) {
             product.quantity += -1;
         }
     }

@@ -73,7 +73,7 @@ export class CartService {
         this.product_list.next(this.cart_item_list);
     }
 
-    public incrementQauntity(product: any) {
+    public incrementQuantity(product: any) {
         this.cart_item_list.find((item: any) => {
             if (item.id === product.id) {
                 product.quantity + 1;
@@ -82,7 +82,7 @@ export class CartService {
         this.product_list.next(this.cart_item_list);
     }
 
-    public decrementQauntity(product: any) {
+    public decrementQuantity(product: any) {
         this.cart_item_list.find((item: any) => {
             if (item.id === product.id) {
                 let prod_qty = product.quantity - 1;
